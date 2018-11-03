@@ -38,9 +38,9 @@ function organizar(){
   var siigo_content2 = texto.substr(350,650);
   document.getElementById('content2').innerHTML = siigo_content2;
 
+
   document.getElementById('box_fact').style.display="inline";
   document.getElementById('btn_org').style.display="none";
-  document.getElementById('resultado').style.display="none";
 }
 
 $(function () {
