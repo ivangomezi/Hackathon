@@ -48,7 +48,7 @@ section .box_file button {
 
   color: rgba(255, 87, 51, 1);
   border: none;
-  border-radius: 0px 5px 5px 0px;
+  border-radius: 0px 2px 2px 0px;
   cursor: pointer;
   transition: all 0.5s;
 }
@@ -61,25 +61,59 @@ section  #x {
 }
 
 
-section .card {
+section .cards {
   padding: 10px;
-
-  border-bottom: none;
 }
-section .card img {
+section .cards img {
   margin: auto;
   margin-bottom: 10px;
   width: 30%;
 }
-section .card textarea {
+section .cards form p {
+  margin: 0px;
+  font-size: 12px;
+}
+section .cards button {
+  margin-top: 10px;
   padding: 10px;
-  margin: auto;
-  width: 30%;
-  height: 200px;
-  min-height: 80px;
 
   color: rgba(255, 87, 51, 1);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+section .cards button:hover {
+  background: rgba(255, 87, 51, 1);
+  color: #fff;
+}
+section .cards textarea {
+  padding: 10px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 50%;
+  height: 200px;
+  min-height: 200px;
+
+  color: rgba(255, 87, 51, 0.5);
 
   border: 1px solid rgba(255, 87, 51, 1);
+  border-radius: 2px;
+}
+
+section .cards table {
+  width: 100%;
+}
+section .cards table th{
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  background: #e1e1e1;
+  color: #222;
+
+  font-weight: normal;
+  border: 1px solid #fff;
   border-radius: 2px;
 }
