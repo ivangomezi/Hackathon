@@ -45,7 +45,7 @@
                       <p id="title6"><p>
           </div>
           <div class="card-body">
-
+            <p id="content"><p>
           </div>
         </div>
 
@@ -62,7 +62,7 @@
       }else{
         document.getElementById('pos').src = dato;
         Tesseract.recognize(dato)
-             .progress(function(progr){})
+             .progress(function(progr){     })
              .then(function(resul){document.getElementById('resultado').value = resul.text;});
         document.getElementById('x').style.display="inline";
         document.getElementById('btn_org').style.display="inline";
@@ -89,6 +89,10 @@
       document.getElementById('title4').innerHTML = siigo4;
       document.getElementById('title5').innerHTML = siigo5;
       document.getElementById('title6').innerHTML = siigo6;
+
+      var siigo_content = texto.substr(137,600);
+      document.getElementById('content').innerHTML = siigo_content;
+
       document.getElementById('box_fact').style.display="inline";
       document.getElementById('btn_org').style.display="none";
     }
