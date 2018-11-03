@@ -30,36 +30,50 @@
       <button type="button" id="x" onclick="limpiar()" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" title="Limpiar campos"><i class="far fa-times-circle"></i></button>
     </div>
   </br>
-    <div class="card">
+    <div class="cards">
       <img id="pos" class="card-img-top" src="" width="30%" alt=""/>
-      <form action="sql.php" method="post">
+      <form action="sql.php" method="post" class="card">
         <!--texto plano-->
         <textarea id="resultado" class="card-text" placeholder="Texto"></textarea></br>
-        <p id="title"><p>
-          <p id="title2"><p>
-            <p id="title3"><p>
-              <p id="title4"><p>
-                <p id="title5"><p>
-                  <p id="title6"><p>
-        <button type="button" onclick="organizar()"><i class="fas fa-hdd"></i> Guardar</button>
+        <div id="box_fact" style="display:none;">
+          <div class="card-header">
+            <b><p id="title"><p></b>
+              <p id="title2"><p>
+                <p id="title3"><p>
+                  <p id="title4"><p>
+                    <p id="title5"><p>
+                      <p id="title6"><p>
+          </div>
+          <div class="card-body">
+
+          </div>
+        </div>
+
       </form>
+      <button type="button" id="btn_org" onclick="organizar()" style="display:none;"><i class="fas fa-hdd"></i> Generar factura</button>
     </div>
 
 <!--javascript-->
     <script>
     function validar(){
-    var dato = document.getElementById('img').value;
-    document.getElementById('pos').src = dato;
-    Tesseract.recognize(dato)
-         .progress(function(progr){})
-         .then(function(resul){document.getElementById('resultado').value = resul.text;});
-    document.getElementById('x').style.display="inline";
+      var dato = document.getElementById('img').value;
+      if(dato == ""){
+        alert('Campo null ¡verifique!')
+      }else{
+        document.getElementById('pos').src = dato;
+        Tesseract.recognize(dato)
+             .progress(function(progr){})
+             .then(function(resul){document.getElementById('resultado').value = resul.text;});
+        document.getElementById('x').style.display="inline";
+        document.getElementById('btn_org').style.display="inline";
+      }
     }
     function limpiar(){
       document.getElementById('img').value = "";
       document.getElementById('pos').src = "";
       document.getElementById('resultado').value = "";
       document.getElementById('x').style.display="none";
+      document.getElementById('box_fact').style.display="none";
     }
     function organizar(){
       var texto = document.getElementById('resultado').value;
@@ -75,6 +89,8 @@
       document.getElementById('title4').innerHTML = siigo4;
       document.getElementById('title5').innerHTML = siigo5;
       document.getElementById('title6').innerHTML = siigo6;
+      document.getElementById('box_fact').style.display="inline";
+      document.getElementById('btn_org').style.display="none";
     }
 
     $(function () {
