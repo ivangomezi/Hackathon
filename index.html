@@ -1,6 +1,7 @@
 <html>
 <head>
   <title>Home</title>
+  <meta charset="ISO-8859-1">
 
   <!--Css-->
   <link href="./css/main.css" rel="stylesheet" type="text/css"/>
@@ -14,28 +15,48 @@
   <!--Js-->
   <script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
 
+  <!--Iconos-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 <body>
+  <header>
+    <p>Scanner de facturas</p>
+  </header>
   <section>
-    <p>CLICK PARA ACTIVAR SCANNER</p>
-    <input type="text" placeholder="¡Ruta o URL imagen!" id="img"/>
-    <button type="button" id="btn_activar">Activar scanner</button>
-    <img src="textos.jpg" width="30%"/>
-    <div id="resultado"></div>
-    <div id="estado"></div>
+    <div class="box_file">
+      <p>¡Seleciona una imagen!</p>
+      <input type="text" placeholder="¡Ruta o URL imagen!" id="img"/>
+      <button type="button" onclick="validar()"><i class="fas fa-file-upload"></i> Activar scanner</button>
+      <button type="button" id="x" onclick="limpiar()"><i class="far fa-times-circle"></i></button>
+    </div>
+  </br>
+    <div class="card">
+      <img id="pos" class="card-img-top" src="" width="30%" alt=""/>
+      <textarea id="resultado" class="card-text" placeholder="Texto"></textarea>
+    </div>
 
+<!--javascript-->
     <script>
-    function validar(img){
-    tesseract.recognize(img)
-      .then(function(resul){document.getElementById("resultado")})
-      .progress(msg => console.log(msg));
-
-    document.getElementById("btn_activar")
-      .addEventListener("click", function(e) {
-      var img = document.getElementById("img").value;
-      validar(img);
-        });
+    function validar(){
+    var dato = document.getElementById('img').value;
+    document.getElementById('pos').src = dato;
+    Tesseract.recognize(dato)
+         .then(function(resul) {
+            document.getElementById("resultado").value = resul.text;
+         });
+    document.getElementById("x").style.display="inline";
     }
+    function limpiar(){
+      document.getElementById('img').value = "";
+      document.getElementById('pos').src = "";
+      document.getElementById("resultado").value = "";
+      document.getElementById("x").style.display="none";
+    }
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+
     </script>
 
   </section>
