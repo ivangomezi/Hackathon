@@ -26,13 +26,23 @@
     <div class="box_file">
       <p>¡Seleciona una imagen!</p>
       <input type="text" placeholder="¡Ruta o URL imagen!" id="img"/>
-      <button type="button" onclick="validar()"><i class="fas fa-file-upload"></i> Activar scanner</button>
-      <button type="button" id="x" onclick="limpiar()"><i class="far fa-times-circle"></i></button>
+      <button type="button" onclick="validar()" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" title="Subir nuevo archivo"><i class="fas fa-file-upload"></i> Activar scanner</button>
+      <button type="button" id="x" onclick="limpiar()" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" title="Limpiar campos"><i class="far fa-times-circle"></i></button>
     </div>
   </br>
     <div class="card">
       <img id="pos" class="card-img-top" src="" width="30%" alt=""/>
-      <textarea id="resultado" class="card-text" placeholder="Texto"></textarea>
+      <form action="sql.php" method="post">
+        <!--texto plano-->
+        <textarea id="resultado" class="card-text" placeholder="Texto"></textarea></br>
+        <p id="title"><p>
+          <p id="title2"><p>
+            <p id="title3"><p>
+              <p id="title4"><p>
+                <p id="title5"><p>
+                  <p id="title6"><p>
+        <button type="button" onclick="organizar()"><i class="fas fa-hdd"></i> Guardar</button>
+      </form>
     </div>
 
 <!--javascript-->
@@ -41,16 +51,30 @@
     var dato = document.getElementById('img').value;
     document.getElementById('pos').src = dato;
     Tesseract.recognize(dato)
-         .then(function(resul) {
-            document.getElementById("resultado").value = resul.text;
-         });
-    document.getElementById("x").style.display="inline";
+         .progress(function(progr){})
+         .then(function(resul){document.getElementById('resultado').value = resul.text;});
+    document.getElementById('x').style.display="inline";
     }
     function limpiar(){
       document.getElementById('img').value = "";
       document.getElementById('pos').src = "";
-      document.getElementById("resultado").value = "";
-      document.getElementById("x").style.display="none";
+      document.getElementById('resultado').value = "";
+      document.getElementById('x').style.display="none";
+    }
+    function organizar(){
+      var texto = document.getElementById('resultado').value;
+      var siigo = texto.substr(4,32);
+      var siigo2 = texto.substr(36,18);
+      var siigo3 = texto.substr(64,26);
+      var siigo4 = texto.substr(90,18);
+      var siigo5 = texto.substr(108,19);
+      var siigo6 = texto.substr(127,7);
+      document.getElementById('title').innerHTML = siigo;
+      document.getElementById('title2').innerHTML = siigo2;
+      document.getElementById('title3').innerHTML = siigo3;
+      document.getElementById('title4').innerHTML = siigo4;
+      document.getElementById('title5').innerHTML = siigo5;
+      document.getElementById('title6').innerHTML = siigo6;
     }
 
     $(function () {
