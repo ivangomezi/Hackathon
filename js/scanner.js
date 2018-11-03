@@ -33,11 +33,14 @@ function organizar(){
   document.getElementById('title5').innerHTML = siigo5;
   document.getElementById('title6').innerHTML = siigo6;
 
-  var siigo_content = texto.substr(137,600);
+  var siigo_content = texto.substr(137,350);
   document.getElementById('content').innerHTML = siigo_content;
+  var siigo_content2 = texto.substr(350,650);
+  document.getElementById('content2').innerHTML = siigo_content2;
 
   document.getElementById('box_fact').style.display="inline";
   document.getElementById('btn_org').style.display="none";
+  document.getElementById('resultado').style.display="none";
 }
 
 $(function () {
