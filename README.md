@@ -1,5 +1,4 @@
-////////////////////////////////
-///Uso en HackaweenSiigo 2018///
+///////////////////////Uso en HackaweenSiigo 2018///////////////////////
 
 Uso api de javascript Tesseract.js: [https://github.com/naptha/tesseract.js#docs]
 
